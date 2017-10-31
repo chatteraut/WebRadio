@@ -67,12 +67,12 @@
     <Compile Include="AddRadioChannel.xaml.cs">
       <DependentUpon>AddRadioChannel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Exceptions\InvalidChars.cs" />
+    <Compile Include="Exceptions\InvalidCharsException.cs" />
     <Compile Include="Exceptions\EntryEmptyException.cs" />
     <Compile Include="Exceptions\ChannelNameNotUniqueException.cs" />
     <Compile Include="Converters.cs" />
-    <Compile Include="Mapper\SettingsMapper.cs" />
-    <Compile Include="Mapper\RadioChannelListMapper.cs" />
+    <Compile Include="Provider\SettingsProvider.cs" />
+    <Compile Include="Provider\RadioChannelListProvider.cs" />
     <Compile Include="Model\SettingsModel.cs" />
     <Compile Include="Resources\AddRadio\AddRadioStrings.de.Designer.cs">
       <DependentUpon>AddRadioStrings.de.resx</DependentUpon>
