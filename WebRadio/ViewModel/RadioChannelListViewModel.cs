@@ -10,6 +10,7 @@ using WebRadio.Static;
 using WebRadio.StaticThings;
 using System.Windows.Controls;
 using System.Windows;
+using RadioPlayerMock;
 
 namespace WebRadio.ViewModel
 {
@@ -18,6 +19,16 @@ namespace WebRadio.ViewModel
     {
         private RadioChannelViewModel _activeChannel;
         private SettingsViewModel settings;
+        private PlayStream _playStream;
+
+        public RadioChannelListViewModel()
+        {
+            _playStream = new PlayStream(new RadioMock());
+            Channels = new ObservableCollection<RadioChannelViewModel>();
+            Settings = new SettingsViewModel(_playStream);
+            LoadChannels();
+            MainInstance = this;
+        }
 
         public static RadioChannelListViewModel MainInstance;
 
@@ -25,7 +36,7 @@ namespace WebRadio.ViewModel
         {
             get
             {
-                return PlayStream.DefaultInstance1;
+                return _playStream;
             }
         }
        
@@ -58,14 +69,14 @@ namespace WebRadio.ViewModel
                 if (value == null)
                 {
                     _activeChannel = null;
-                    PlayStream.DefaultInstance1.setRadio(null);
+                    ThePlayStream.setRadio(null);
                     RaisePropertyChanged("ActiveChannel");
                 }
                 else if (_activeChannel != value)
                 {
                     _activeChannel = value;
-                    PlayStream.DefaultInstance1.setRadio(value.Url);
-                    PlayStream.DefaultInstance1.SetVolume(Settings.Volume);
+                    ThePlayStream.setRadio(value.Url);
+                    ThePlayStream.SetVolume(Settings.Volume);
                     RaisePropertyChanged("ActiveChannel");
                 }
             }
@@ -85,16 +96,6 @@ namespace WebRadio.ViewModel
         }
 
         public RadioChannelViewModel SelectedChannel { get; set; }
-
-       
-
-        public RadioChannelListViewModel()
-        {
-            Channels = new ObservableCollection<RadioChannelViewModel>();
-            Settings = new SettingsViewModel();
-            LoadChannels();
-            MainInstance = this;
-        }
 
         public void Add(RadioChannelViewModel channel)
         {
@@ -127,7 +128,7 @@ namespace WebRadio.ViewModel
 
         public void PlayActive()
         {
-            PlayStream.DefaultInstance1.PlayTheStream();
+            ThePlayStream.PlayTheStream();
         }
 
         public RelayCommand PlayStreamStart
@@ -140,7 +141,7 @@ namespace WebRadio.ViewModel
 
         public void PauseActive()
         {
-            PlayStream.DefaultInstance1.StopTheStream();
+            ThePlayStream.StopTheStream();
         }
 
         public RelayCommand PauseStream
@@ -153,7 +154,7 @@ namespace WebRadio.ViewModel
 
         public void RemoveActive()
         {
-            PlayStream.DefaultInstance1.StopTheStream();
+            ThePlayStream.StopTheStream();
             ActiveChannel = null;
         }
 

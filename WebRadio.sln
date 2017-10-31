@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMmini", "MVVMmini\MVVMmini.csproj", "{C08074CB-F609-4199-A3D3-74749B32F044}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebRadio", "WebRadio\WebRadio.csproj", "{B49D8A43-0660-489E-A3E1-8C1FA72049A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerInterface", "PlayerInterface\PlayerInterface.csproj", "{D29EF53D-EE5B-4BDA-91F3-7C161373E818}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioPlayerMock", "RadioPlayerMock\RadioPlayerMock.csproj", "{B8F35497-0EF1-436E-86C8-DBD161E6C4D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +25,19 @@ Global
 		{B49D8A43-0660-489E-A3E1-8C1FA72049A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B49D8A43-0660-489E-A3E1-8C1FA72049A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B49D8A43-0660-489E-A3E1-8C1FA72049A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D29EF53D-EE5B-4BDA-91F3-7C161373E818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D29EF53D-EE5B-4BDA-91F3-7C161373E818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D29EF53D-EE5B-4BDA-91F3-7C161373E818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D29EF53D-EE5B-4BDA-91F3-7C161373E818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8F35497-0EF1-436E-86C8-DBD161E6C4D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F35497-0EF1-436E-86C8-DBD161E6C4D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F35497-0EF1-436E-86C8-DBD161E6C4D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F35497-0EF1-436E-86C8-DBD161E6C4D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2AF32C02-EF1A-497E-A3A4-BEEAD8ED42A7}
 	EndGlobalSection
 EndGlobal

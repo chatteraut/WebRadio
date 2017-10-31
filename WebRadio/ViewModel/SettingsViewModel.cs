@@ -15,6 +15,7 @@ namespace WebRadio.ViewModel
     public class SettingsViewModel : ObservableObject
     {
         public SettingsModel Settings { get; set; }
+        public PlayStream _stream;
         public int Width
         {
             get
@@ -50,18 +51,19 @@ namespace WebRadio.ViewModel
                 if(Settings.Volume != value)
                 {
                     Settings.Volume = value;
-                    PlayStream.DefaultInstance1.SetVolume(value);
+                    _stream.SetVolume(value);
                     RaisePropertyChanged("Volume");
                 }
-                if(PlayStream.DefaultInstance1.GetVolume() != value)
+                if(_stream.GetVolume() != value)
                 {
-                    PlayStream.DefaultInstance1.SetVolume(value);
+                    _stream.SetVolume(value);
                 }
             }
         }
 
-        public SettingsViewModel()
+        public SettingsViewModel(PlayStream stream)
         {
+            _stream = stream;
             Settings = SettingsMapper.DeserializeSettings(Path.Combine(SavePathsHelper.PathBase, "Settings.sts"));
             if(Settings == null)
             {

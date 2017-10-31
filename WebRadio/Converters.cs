@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlayerInterface.Enums;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace WebRadio
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            int playState = (int)value;
+            PlayerState playState = (PlayerState)value;
             return PlayStateHelper.GetLocalisedPlayStateNameByString(playState);
         }
 

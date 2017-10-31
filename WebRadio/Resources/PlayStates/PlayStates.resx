@@ -153,4 +153,7 @@
   <data name="Waiting" xml:space="preserve">
     <value>Waiting</value>
   </data>
+  <data name="Stopping" xml:space="preserve">
+    <value>Stopping...</value>
+  </data>
 </root>

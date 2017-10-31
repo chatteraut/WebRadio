@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlayerInterface.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,48 +9,27 @@ namespace WebRadio.Static
 {
     public static class PlayStateHelper
     {
-        public static string GetLocalisedPlayStateNameByString(int PlayState)
+        public static string GetLocalisedPlayStateNameByString(PlayerState PlayState)
         {
-            PlayStateE playState = (PlayStateE)PlayState;
+            PlayerState playState = (PlayerState)PlayState;
             string playStateS = "-";
 
             switch (playState)
             {
-                case PlayStateE.Undefiend:
+                case PlayerState.Unknown:
                     playStateS = Resources.PlayStates.PlayStates.Undefiend;
                     break;
-                case PlayStateE.Stopped:
+                case PlayerState.Stopped:
                     playStateS = Resources.PlayStates.PlayStates.Stopped;
                     break;
-                case PlayStateE.Paused:
-                    playStateS = Resources.PlayStates.PlayStates.Paused;
-                    break;
-                case PlayStateE.Playing:
+                case PlayerState.Running:
                     playStateS = Resources.PlayStates.PlayStates.Playing;
                     break;
-                case PlayStateE.ScanForward:
-                    playStateS = Resources.PlayStates.PlayStates.ScanForward;
-                    break;
-                case PlayStateE.ScanReverse:
-                    playStateS = Resources.PlayStates.PlayStates.ScanBackward;
-                    break;
-                case PlayStateE.Buffering:
-                    playStateS = Resources.PlayStates.PlayStates.Buffering;
-                    break;
-                case PlayStateE.Waiting:
-                    playStateS = Resources.PlayStates.PlayStates.Waiting;
-                    break;
-                case PlayStateE.MediaEnded:
-                    playStateS = Resources.PlayStates.PlayStates.MediaEnded;
-                    break;
-                case PlayStateE.Transitioning:
+                case PlayerState.Preparing:
                     playStateS = Resources.PlayStates.PlayStates.Transitioning;
                     break;
-                case PlayStateE.Ready:
-                    playStateS = Resources.PlayStates.PlayStates.Ready;
-                    break;
-                case PlayStateE.Reconnecting:
-                    playStateS = Resources.PlayStates.PlayStates.Reconnecting;
+                case PlayerState.Stopping:
+                    playStateS = Resources.PlayStates.PlayStates.Stopping;
                     break;
             }
 
