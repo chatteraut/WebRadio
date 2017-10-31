@@ -12,6 +12,7 @@ namespace PlayerInterface.Enums
         Preparing = 1,
         Running = 2,
         Stopping = 3,
-        Stopped = 4
+        Stopped = 4,
+        Buffering = 5,
     }
 }

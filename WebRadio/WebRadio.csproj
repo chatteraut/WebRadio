@@ -199,6 +199,10 @@
       <Project>{b8f35497-0ef1-436e-86c8-dbd161e6c4d4}</Project>
       <Name>RadioPlayerMock</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WmpRadioPlayer\WmpRadioPlayer.csproj">
+      <Project>{AAEE1E07-AEC2-4039-B205-70FAE5903D39}</Project>
+      <Name>WmpRadioPlayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Pause_Icon.png" />

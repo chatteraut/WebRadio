@@ -31,25 +31,12 @@ namespace WebRadio.Static
                 case PlayerState.Stopping:
                     playStateS = Resources.PlayStates.PlayStates.Stopping;
                     break;
+                case PlayerState.Buffering:
+                    playStateS = Resources.PlayStates.PlayStates.Buffering;
+                    break;
             }
 
             return playStateS;
         }
-    }
-
-    public enum PlayStateE
-    {
-        Undefiend = 0,
-        Stopped = 1,
-        Paused = 2,
-        Playing = 3,
-        ScanForward = 4,
-        ScanReverse = 5,
-        Buffering = 6,
-        Waiting = 7,
-        MediaEnded = 8,
-        Transitioning = 9,
-        Ready = 10,
-        Reconnecting = 11
     }
 }

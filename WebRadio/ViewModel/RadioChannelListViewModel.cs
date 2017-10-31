@@ -11,6 +11,7 @@ using WebRadio.StaticThings;
 using System.Windows.Controls;
 using System.Windows;
 using RadioPlayerMock;
+using WmpRadioPlayer;
 
 namespace WebRadio.ViewModel
 {
@@ -23,7 +24,7 @@ namespace WebRadio.ViewModel
 
         public RadioChannelListViewModel()
         {
-            _playStream = new PlayStream(new RadioMock());
+            _playStream = new PlayStream(new WmpPlayer());
             Channels = new ObservableCollection<RadioChannelViewModel>();
             Settings = new SettingsViewModel(_playStream);
             LoadChannels();

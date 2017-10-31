@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerInterface", "PlayerIn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioPlayerMock", "RadioPlayerMock\RadioPlayerMock.csproj", "{B8F35497-0EF1-436E-86C8-DBD161E6C4D4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Players", "Players", "{436B1AD1-49AD-4427-A238-CA5B608FF429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WmpRadioPlayer", "WmpRadioPlayer\WmpRadioPlayer.csproj", "{AAEE1E07-AEC2-4039-B205-70FAE5903D39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,17 @@ Global
 		{B8F35497-0EF1-436E-86C8-DBD161E6C4D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8F35497-0EF1-436E-86C8-DBD161E6C4D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8F35497-0EF1-436E-86C8-DBD161E6C4D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAEE1E07-AEC2-4039-B205-70FAE5903D39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAEE1E07-AEC2-4039-B205-70FAE5903D39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAEE1E07-AEC2-4039-B205-70FAE5903D39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAEE1E07-AEC2-4039-B205-70FAE5903D39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B8F35497-0EF1-436E-86C8-DBD161E6C4D4} = {436B1AD1-49AD-4427-A238-CA5B608FF429}
+		{AAEE1E07-AEC2-4039-B205-70FAE5903D39} = {436B1AD1-49AD-4427-A238-CA5B608FF429}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2AF32C02-EF1A-497E-A3A4-BEEAD8ED42A7}

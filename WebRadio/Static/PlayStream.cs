@@ -17,7 +17,6 @@ namespace WebRadio.StaticThings
     public class PlayStream : ObservableObject
     {
         
-        //private WMPLib.WindowsMediaPlayer _player = new WMPLib.WindowsMediaPlayer();
         private PlayerState _playState;
         private IPlayer _player;
 
