@@ -20,5 +20,6 @@ namespace PlayerInterface.Interfaces
         /// <exception cref="Exceptions.VolumeOutOfRagenException"></exception>
         void SetVolumeFrom0to100(int volume);
         int GetVolumeFrom0to100();
+        string Name { get; }
     }
 }

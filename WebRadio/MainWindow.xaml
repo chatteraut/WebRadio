@@ -41,6 +41,12 @@
                 <Button Command="{Binding RemoveCommand}" CommandParameter="{Binding ElementName=_radioStations,Path=SelectedItem}">
                     <Image Source="Images/Minus_Icon.png" Width="20" Height="20"/>
                 </Button>
+                <ComboBox ItemsSource="{Binding Path=Players}"
+                        DisplayMemberPath="Name"
+                        SelectedValue="{Binding Path=ActivePlayer}"
+                          SelectedIndex="0"
+                    />
+                
             </ToolBar>
             <ListBox 
                         Grid.Row="1"

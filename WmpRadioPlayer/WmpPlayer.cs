@@ -17,6 +17,14 @@ namespace WmpRadioPlayer
         private bool Running { get; set; } = false;
         private Action<PlayerState> _stateChangeCallback;
 
+        public string Name
+        {
+            get
+            {
+                return Resources.Text.WmpPlayer;
+            }
+        }
+
         public int GetVolumeFrom0to100()
         {
             return _player.settings.volume;

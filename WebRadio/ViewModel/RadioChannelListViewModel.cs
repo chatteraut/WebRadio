@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using System.Windows;
 using RadioPlayerMock;
 using WmpRadioPlayer;
+using PlayerInterface.Interfaces;
 
 namespace WebRadio.ViewModel
 {
@@ -24,14 +25,30 @@ namespace WebRadio.ViewModel
 
         public RadioChannelListViewModel()
         {
+            Players = new List<IPlayer>() { new WmpPlayer(), new RadioMock() };
             _playStream = new PlayStream(new WmpPlayer());
             Channels = new ObservableCollection<RadioChannelViewModel>();
             Settings = new SettingsViewModel(_playStream);
             LoadChannels();
             MainInstance = this;
         }
-
         public static RadioChannelListViewModel MainInstance;
+        public ObservableCollection<RadioChannelViewModel> Channels { get; set; }
+        public RadioChannelViewModel SelectedChannel { get; set; }
+        public IEnumerable<IPlayer> Players { get ;set; }
+
+        public IPlayer ActivePlayer
+        {
+            get
+            {
+                return _playStream.RadioPlayer;
+            }
+            set
+            {
+                ActiveChannel = null;
+                _playStream.RadioPlayer = value;
+            }
+        }
 
         public PlayStream ThePlayStream
         {
@@ -40,18 +57,15 @@ namespace WebRadio.ViewModel
                 return _playStream;
             }
         }
-       
-
-        public ObservableCollection<RadioChannelViewModel> Channels { get; set; }
 
         public List<string> Groups
         {
             get
             {
                 List<string> groups = new List<string>();
-                foreach(RadioChannelViewModel channel in Channels)
+                foreach (RadioChannelViewModel channel in Channels)
                 {
-                    if(!groups.Contains(channel.Channel.Group_Name))
+                    if (!groups.Contains(channel.Channel.Group_Name))
                     {
                         groups.Add(channel.Channel.Group_Name);
                     }
@@ -60,10 +74,11 @@ namespace WebRadio.ViewModel
             }
         }
 
-        public RadioChannelViewModel ActiveChannel {
+        public RadioChannelViewModel ActiveChannel
+        {
             get
             {
-                return _activeChannel;   
+                return _activeChannel;
             }
             set
             {
@@ -95,8 +110,6 @@ namespace WebRadio.ViewModel
                 settings = value;
             }
         }
-
-        public RadioChannelViewModel SelectedChannel { get; set; }
 
         public void Add(RadioChannelViewModel channel)
         {

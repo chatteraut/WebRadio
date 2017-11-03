@@ -57,6 +57,13 @@ namespace RadioPlayerMock
             }
         }
 
+        public string Name {
+            get
+            {
+                return "RadioMock";
+            }
+        }
+
         public int GetVolumeFrom0to100()
         {
             return Volume;

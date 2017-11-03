@@ -23,7 +23,21 @@ namespace WebRadio.StaticThings
         public PlayStream(IPlayer radioPlayer)
         {
             _player = radioPlayer;
-            initialize();
+            InitializePlayer();
+        }
+
+        public IPlayer RadioPlayer
+        {
+            get
+            {
+                return _player;
+            }
+            set
+            {
+                _player.Stop();
+                _player = value;
+                InitializePlayer();
+            }
         }
 
         public PlayerState PlayState
@@ -73,7 +87,7 @@ namespace WebRadio.StaticThings
             PlayState = NewState;
         }
 
-        private void initialize()
+        private void InitializePlayer()
         {
             _player.Initialize(PlayStateChanges);
         }
