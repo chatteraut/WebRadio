@@ -13,7 +13,7 @@ using WebRadio.Static;
 namespace WebRadio.ViewModel
 {
     [Serializable]
-    public class RadioChannelViewModel :ObservableObject
+    public class RadioChannelViewModel : ObservableObject
     {
         private RadioChannelListViewModel _parent = null;
 

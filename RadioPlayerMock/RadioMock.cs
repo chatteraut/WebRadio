@@ -52,7 +52,7 @@ namespace RadioPlayerMock
             }
             set
             {
-                Write("Url set to " + value.ToString());
+                Write("Url set to " + value?.ToString());
                 _url = value;
             }
         }
@@ -93,7 +93,7 @@ namespace RadioPlayerMock
         {
             State = PlayerState.Preparing;
 
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
 
             State = PlayerState.Running;
         }
@@ -102,7 +102,7 @@ namespace RadioPlayerMock
         {
             State = PlayerState.Stopping;
 
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
 
             State = PlayerState.Stopped;
         }

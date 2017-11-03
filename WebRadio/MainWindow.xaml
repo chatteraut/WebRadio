@@ -26,9 +26,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="Auto" MinHeight="62"/>
+            <RowDefinition Height="15.5"/>
+            <RowDefinition Height="46.5"/>
         </Grid.RowDefinitions>
-        <Grid Grid.RowSpan="2" RenderTransformOrigin="0.471,0.774">
+        <Grid Grid.RowSpan="3" RenderTransformOrigin="0.471,0.774">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -46,7 +47,7 @@
                         SelectedValue="{Binding Path=ActivePlayer}"
                           SelectedIndex="0"
                     />
-                
+
             </ToolBar>
             <ListBox 
                         Grid.Row="1"

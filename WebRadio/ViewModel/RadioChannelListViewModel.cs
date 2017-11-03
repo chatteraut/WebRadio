@@ -13,11 +13,13 @@ using System.Windows;
 using RadioPlayerMock;
 using WmpRadioPlayer;
 using PlayerInterface.Interfaces;
+using WebRadio.Kernel;
+using System.Linq;
 
 namespace WebRadio.ViewModel
 {
     [Serializable]
-    public class RadioChannelListViewModel : ObservableObject
+    public class RadioChannelListViewModel : ObservableObject, IRadioChannelListViewModel
     {
         private RadioChannelViewModel _activeChannel;
         private SettingsViewModel settings;
@@ -25,13 +27,15 @@ namespace WebRadio.ViewModel
 
         public RadioChannelListViewModel()
         {
-            Players = new List<IPlayer>() { new WmpPlayer(), new RadioMock() };
-            _playStream = new PlayStream(new WmpPlayer());
+            var kernelProvider = KernelProvider.Instance;
+            Players = kernelProvider.GetAll<IPlayer>();
+            _playStream = new PlayStream(Players.First());
             Channels = new ObservableCollection<RadioChannelViewModel>();
             Settings = new SettingsViewModel(_playStream);
             LoadChannels();
             MainInstance = this;
         }
+
         public static RadioChannelListViewModel MainInstance;
         public ObservableCollection<RadioChannelViewModel> Channels { get; set; }
         public RadioChannelViewModel SelectedChannel { get; set; }
