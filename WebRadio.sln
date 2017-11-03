@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMmini", "MVVMmini\MVVMmini.csproj", "{C08074CB-F609-4199-A3D3-74749B32F044}"
 EndProject
@@ -14,6 +14,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Players", "Players", "{436B1AD1-49AD-4427-A238-CA5B608FF429}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WmpRadioPlayer", "WmpRadioPlayer\WmpRadioPlayer.csproj", "{AAEE1E07-AEC2-4039-B205-70FAE5903D39}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{72F4E6BF-5E41-4EA0-8115-0B4373FAFCDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Licenses", "Licenses", "{CA6891E6-ED55-41B9-8C3A-D74C30AD6005}"
+	ProjectSection(SolutionItems) = preProject
+		Ninject.txt = Ninject.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
