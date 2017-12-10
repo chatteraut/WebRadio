@@ -1,6 +1,4 @@
-﻿#define DEBUG
-
-using Ninject.Modules;
+﻿using Ninject.Modules;
 using PlayerInterface.Interfaces;
 using RadioPlayerMock;
 using System;
@@ -20,14 +18,12 @@ namespace WebRadio.Kernel
     {
         public override void Load()
         {
-
+            LoadPlayerPlugins();
 #if DEBUG
             Bind<IPlayer>().To<RadioMock>();
 #endif
 
             Bind<IRadioChannelListViewModel>().To<RadioChannelListViewModel>();
-
-            LoadPlayerPlugins();
         }
 
         private void LoadPlayerPlugins()
