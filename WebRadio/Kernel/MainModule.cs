@@ -1,4 +1,6 @@
-﻿using Ninject.Modules;
+﻿#define DEBUG
+
+using Ninject.Modules;
 using PlayerInterface.Interfaces;
 using RadioPlayerMock;
 using System;
@@ -11,13 +13,17 @@ using System.Threading.Tasks;
 using WebRadio.ViewModel;
 using WmpRadioPlayer;
 
+
 namespace WebRadio.Kernel
 {
     public class MainModule : NinjectModule
     {
         public override void Load()
         {
+
+#if DEBUG
             Bind<IPlayer>().To<RadioMock>();
+#endif
 
             Bind<IRadioChannelListViewModel>().To<RadioChannelListViewModel>();
 
