@@ -16,6 +16,8 @@ namespace WebRadio.ViewModel
     {
         public SettingsModel Settings { get; set; }
         public PlayStream _stream;
+        public ISettingsDao _settingsDao;
+
         public int Width
         {
             get
@@ -61,11 +63,29 @@ namespace WebRadio.ViewModel
             }
         }
 
-        public SettingsViewModel(PlayStream stream)
+        public Guid PlayerGuid
         {
+            get
+            {
+                return Settings.UsedPlayerGuid;
+            }
+            set
+            {
+                Settings.UsedPlayerGuid = value;
+            }
+        }
+
+        public SettingsViewModel(PlayStream stream, ISettingsDao dao)
+        {
+            _settingsDao = dao;
             _stream = stream;
-            Settings = SettingsMapper.DeserializeSettings(Path.Combine(SavePathsHelper.PathBase, "Settings.sts"));
-            if(Settings == null)
+            InitializeSettings();
+        }
+
+        private void InitializeSettings()
+        {
+            Settings = _settingsDao.LoadSettings();
+            if (Settings == null)
             {
                 Settings = new SettingsModel();
             }
@@ -73,7 +93,7 @@ namespace WebRadio.ViewModel
 
         public void SaveSettings()
         {
-            SettingsMapper.SerializeSettings(Path.Combine(SavePathsHelper.PathBase, "Settings.sts"), Settings);
+            _settingsDao.SaveSettings(Settings);
             Console.WriteLine("Deserialized Settings.. hopefully");
         }
     }

@@ -28,10 +28,11 @@ namespace WebRadio.ViewModel
         public RadioChannelListViewModel()
         {
             var kernelProvider = KernelProvider.Instance;
-            Players = kernelProvider.GetAll<IPlayer>();
+            Players = kernelProvider.GetAll<IPlayer>().ToList();
+            ISettingsDao settingsDao = kernelProvider.Get<ISettingsDao>();
             _playStream = new PlayStream(Players.First());
             Channels = new ObservableCollection<RadioChannelViewModel>();
-            Settings = new SettingsViewModel(_playStream);
+            Settings = new SettingsViewModel(_playStream, settingsDao);
             LoadChannels();
             MainInstance = this;
         }
@@ -39,7 +40,18 @@ namespace WebRadio.ViewModel
         public static RadioChannelListViewModel MainInstance;
         public ObservableCollection<RadioChannelViewModel> Channels { get; set; }
         public RadioChannelViewModel SelectedChannel { get; set; }
-        public IEnumerable<IPlayer> Players { get ;set; }
+        public IList<IPlayer> Players { get ;set; }
+
+        public int ActivePlayerIndexOrZero
+        {
+            get
+            {
+                var guidPlayer = Players.Where(x => x.Identifier == Settings.PlayerGuid)
+                    .FirstOrDefault();
+                var pos = guidPlayer == null ? 0 : Players.IndexOf(guidPlayer);
+                return pos;
+            }
+        }
 
         public IPlayer ActivePlayer
         {
@@ -51,6 +63,7 @@ namespace WebRadio.ViewModel
             {
                 ActiveChannel = null;
                 _playStream.RadioPlayer = value;
+                Settings.PlayerGuid = value.Identifier;
             }
         }
 

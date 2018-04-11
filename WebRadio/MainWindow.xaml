@@ -45,7 +45,7 @@
                 <ComboBox ItemsSource="{Binding Path=Players}"
                         DisplayMemberPath="Name"
                         SelectedValue="{Binding Path=ActivePlayer}"
-                          SelectedIndex="0"
+                        SelectedIndex="{Binding Path=ActivePlayerIndexOrZero, Mode=OneWay}"
                     />
 
             </ToolBar>

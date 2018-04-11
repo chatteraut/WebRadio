@@ -25,6 +25,8 @@ namespace WmpRadioPlayer
             }
         }
 
+        public Guid Identifier => new Guid("0fd9a557-d896-4f40-8620-ee43b6321baa");
+
         public int GetVolumeFrom0to100()
         {
             return _player.settings.volume;

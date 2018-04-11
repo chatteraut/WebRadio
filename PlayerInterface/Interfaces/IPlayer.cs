@@ -21,5 +21,6 @@ namespace PlayerInterface.Interfaces
         void SetVolumeFrom0to100(int volume);
         int GetVolumeFrom0to100();
         string Name { get; }
+        Guid Identifier { get; }
     }
 }

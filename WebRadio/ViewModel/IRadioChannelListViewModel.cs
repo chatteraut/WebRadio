@@ -14,7 +14,7 @@ namespace WebRadio.ViewModel
         List<string> Groups { get; }
         RelayCommand OpenAddChannelC { get; }
         RelayCommand PauseStream { get; }
-        IEnumerable<IPlayer> Players { get; set; }
+        IList<IPlayer> Players { get; set; }
         RelayCommand PlayStreamStart { get; }
         RelayCommand RemoveActiveChannel { get; }
         RelayCommand<RadioChannelViewModel> RemoveCommand { get; }

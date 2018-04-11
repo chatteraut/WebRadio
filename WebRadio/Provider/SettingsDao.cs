@@ -11,16 +11,23 @@ using WebRadio.Properties;
 
 namespace WebRadio.Mapper
 {
-    public static class SettingsMapper
+    public class SettingsDao : ISettingsDao
     {
-        public static SettingsModel DeserializeSettings(string path)
+        string _path;
+
+        public SettingsDao(string path)
+        {
+            _path = path;
+        }
+
+        public SettingsModel LoadSettings()
         {
             SettingsModel settings = null;
             Stream stream = null;
             try
             {
                 var formatter = new BinaryFormatter();
-                stream = File.Open(path, FileMode.Open);
+                stream = File.Open(_path, FileMode.Open);
                 settings = (SettingsModel)formatter.Deserialize(stream); 
             }
             catch(FileNotFoundException)
@@ -33,7 +40,7 @@ namespace WebRadio.Mapper
             }
             catch (IOException)
             {
-                MessageBox.Show(icon: MessageBoxImage.Error, messageBoxText: Resources.Strings.CannotOpenFile + " " + path, button: MessageBoxButton.OK, caption: Resources.Strings.Problem);
+                MessageBox.Show(icon: MessageBoxImage.Error, messageBoxText: Resources.Strings.CannotOpenFile + " " + _path, button: MessageBoxButton.OK, caption: Resources.Strings.Problem);
             }
             catch(InvalidCastException)
             {
@@ -50,18 +57,18 @@ namespace WebRadio.Mapper
             return settings;
         }
 
-        public static void SerializeSettings(string path, SettingsModel settings)
+        public void SaveSettings(SettingsModel settings)
         {
             Stream stream = null;
             try
             {
                 var formatter = new BinaryFormatter();
-                stream = File.Open(path, FileMode.Create);
+                stream = File.Open(_path, FileMode.Create);
                 formatter.Serialize(stream, settings);
             }
             catch (IOException e)
             {
-                MessageBox.Show(icon: MessageBoxImage.Error, messageBoxText: Resources.Strings.CannotOpenFile + " " + path, button: MessageBoxButton.OK, caption: Resources.Strings.Problem);
+                MessageBox.Show(icon: MessageBoxImage.Error, messageBoxText: Resources.Strings.CannotOpenFile + " " + _path, button: MessageBoxButton.OK, caption: Resources.Strings.Problem);
             }
             catch(Exception e)
             {

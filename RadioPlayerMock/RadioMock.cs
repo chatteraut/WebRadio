@@ -64,6 +64,8 @@ namespace RadioPlayerMock
             }
         }
 
+        public Guid Identifier => new Guid("f07758a5-3426-4dac-b401-93b5b37bfad3");
+
         public int GetVolumeFrom0to100()
         {
             return Volume;
@@ -81,12 +83,12 @@ namespace RadioPlayerMock
 
         public void SetVolumeFrom0to100(int volume)
         {
-            if(volume > 100 || volume < 0)
+            if (volume > 100 || volume < 0)
             {
                 throw new VolumeOutOfRagenException();
             }
             Volume = volume;
-            
+
         }
 
         public void Start()

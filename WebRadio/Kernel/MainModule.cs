@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using WebRadio.Mapper;
 using WebRadio.ViewModel;
 using WmpRadioPlayer;
 
@@ -21,7 +22,13 @@ namespace WebRadio.Kernel
 
             Bind<IRadioChannelListViewModel>().To<RadioChannelListViewModel>();
 
+            LoadStatics();
             LoadPlayerPlugins();
+        }
+
+        private void LoadStatics()
+        {
+            Bind<ISettingsDao>().ToConstant(new SettingsDao("Settings.sts"));
         }
 
         private void LoadPlayerPlugins()

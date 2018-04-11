@@ -78,7 +78,8 @@
     <Compile Include="Converters.cs" />
     <Compile Include="Kernel\KernelProvider.cs" />
     <Compile Include="Kernel\MainModule.cs" />
-    <Compile Include="Provider\SettingsProvider.cs" />
+    <Compile Include="Provider\ISettingsDao.cs" />
+    <Compile Include="Provider\SettingsDao.cs" />
     <Compile Include="Provider\RadioChannelListProvider.cs" />
     <Compile Include="Model\SettingsModel.cs" />
     <Compile Include="Resources\AddRadio\AddRadioStrings.de.Designer.cs">
