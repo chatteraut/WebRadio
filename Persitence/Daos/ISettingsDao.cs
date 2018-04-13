@@ -1,6 +1,6 @@
-﻿using WebRadio.Model;
+﻿using Persistence.Model;
 
-namespace WebRadio.Mapper
+namespace Persistence.Mapper
 {
     public interface ISettingsDao
     {

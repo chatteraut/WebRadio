@@ -1,4 +1,5 @@
 ﻿using Ninject.Modules;
+using Persistence.Mapper;
 using PlayerInterface.Interfaces;
 using RadioPlayerMock;
 using System;
@@ -28,7 +29,7 @@ namespace WebRadio.Kernel
 
         private void LoadStatics()
         {
-            Bind<ISettingsDao>().ToConstant(new SettingsDao("Settings.sts"));
+            Bind<ISettingsDao>().ToConstant(new SettingsFileDao("Settings.sts"));
         }
 
         private void LoadPlayerPlugins()

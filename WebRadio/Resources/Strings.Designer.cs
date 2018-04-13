@@ -70,7 +70,7 @@ namespace WebRadio.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not open File:.
+        ///   Looks up a localized string similar to Cannot open File.
         /// </summary>
         public static string CannotOpenFile {
             get {

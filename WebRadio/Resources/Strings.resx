@@ -121,7 +121,7 @@
     <value>Active Channel: </value>
   </data>
   <data name="CannotOpenFile" xml:space="preserve">
-    <value>Can not open File:</value>
+    <value>Cannot open File</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>

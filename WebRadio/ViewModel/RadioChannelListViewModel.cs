@@ -1,20 +1,19 @@
 ﻿using MicroMvvm;
+using Persistence;
+using Persistence.Mapper;
+using Persistence.Model;
+using PlayerInterface.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
+using System.Windows;
 using WebRadio.Exceptions;
+using WebRadio.Kernel;
 using WebRadio.Mapper;
-using WebRadio.Model;
 using WebRadio.Static;
 using WebRadio.StaticThings;
-using System.Windows.Controls;
-using System.Windows;
-using RadioPlayerMock;
-using WmpRadioPlayer;
-using PlayerInterface.Interfaces;
-using WebRadio.Kernel;
-using System.Linq;
 
 namespace WebRadio.ViewModel
 {
@@ -40,7 +39,7 @@ namespace WebRadio.ViewModel
         public static RadioChannelListViewModel MainInstance;
         public ObservableCollection<RadioChannelViewModel> Channels { get; set; }
         public RadioChannelViewModel SelectedChannel { get; set; }
-        public IList<IPlayer> Players { get ;set; }
+        public IList<IPlayer> Players { get; set; }
 
         public int ActivePlayerIndexOrZero
         {
@@ -130,7 +129,7 @@ namespace WebRadio.ViewModel
 
         public void Add(RadioChannelViewModel channel)
         {
-            if(Channels.Contains(channel))
+            if (Channels.Contains(channel))
             {
                 throw new ChannelNameNotUniqueException();
             }
@@ -143,14 +142,14 @@ namespace WebRadio.ViewModel
 
         public void Remove(RadioChannelViewModel channel)
         {
-            if(Channels.Contains(channel))
+            if (Channels.Contains(channel))
             {
                 Channels.Remove(channel);
                 channel.Parent = null;
             }
             else
             {
-                if(channel.Parent == this)
+                if (channel.Parent == this)
                 {
                     channel.Parent = null;
                 }
@@ -201,7 +200,7 @@ namespace WebRadio.ViewModel
         {
             Channels.Clear();
             List<RadioChannel> channelList = RadioChannelListMapper.DeserializeRadioChannelList(Path.Combine(SavePathsHelper.PathBase, "RadioChannels.rcs"));
-            foreach(RadioChannel rc in channelList)
+            foreach (RadioChannel rc in channelList)
             {
                 Add(new RadioChannelViewModel(rc));
             }
@@ -211,7 +210,14 @@ namespace WebRadio.ViewModel
         {
             SavePathsHelper.TryCreateSaveFolder();
             SaveChannelList();
-            Settings.SaveSettings();
+            try
+            {
+                Settings.SaveSettings();
+            }
+            catch (SaveFailedException)
+            {
+                MessageBox.Show(icon: MessageBoxImage.Error, messageBoxText: Resources.Strings.CannotOpenFile, button: MessageBoxButton.OK, caption: Resources.Strings.Problem);
+            }
         }
 
         public void SaveChannelList()
@@ -231,7 +237,7 @@ namespace WebRadio.ViewModel
                 return new RelayCommand(SaveData);
             }
         }
-        
+
         public void OpenAddChannel()
         {
             AddRadioChannel arc = new AddRadioChannel(this);

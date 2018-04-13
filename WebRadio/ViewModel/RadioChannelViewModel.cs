@@ -1,13 +1,8 @@
 ﻿using MicroMvvm;
+using Persistence.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebRadio.Exceptions;
-using WebRadio.Model;
 using WebRadio.Static;
 
 namespace WebRadio.ViewModel
@@ -29,7 +24,8 @@ namespace WebRadio.ViewModel
             Channel = rc;
         }
 
-        public RadioChannelListViewModel Parent {
+        public RadioChannelListViewModel Parent
+        {
             get
             {
                 return _parent;
@@ -59,7 +55,7 @@ namespace WebRadio.ViewModel
                     {
                         throw new EntryEmptyException(Resources.Strings.Field_Not_Emtpy);
                     }
-                    if(SavePathsHelper.DoesStringContainInvalidFileNameChars(value))
+                    if (SavePathsHelper.DoesStringContainInvalidFileNameChars(value))
                     {
                         throw new InvalidCharsException(Resources.AddRadio.AddRadioStrings.Invalid_chars + Path.GetInvalidFileNameChars().ToString());
                     }
@@ -69,7 +65,7 @@ namespace WebRadio.ViewModel
             }
         }
 
-        
+
 
         public string Url
         {
@@ -81,7 +77,7 @@ namespace WebRadio.ViewModel
             {
                 if (Channel.Url != value)
                 {
-                    if(String.IsNullOrEmpty(value))
+                    if (String.IsNullOrEmpty(value))
                     {
                         throw new EntryEmptyException(Resources.Strings.Field_Not_Emtpy);
                     }
@@ -127,7 +123,7 @@ namespace WebRadio.ViewModel
             }
         }
 
-        
+
 
         private void SetActive(RadioChannelListViewModel channel)
         {

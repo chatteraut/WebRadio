@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebRadio.Model
+namespace Persistence.Model
 {
     [Serializable]
     public class RadioChannel

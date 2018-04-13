@@ -78,10 +78,7 @@
     <Compile Include="Converters.cs" />
     <Compile Include="Kernel\KernelProvider.cs" />
     <Compile Include="Kernel\MainModule.cs" />
-    <Compile Include="Provider\ISettingsDao.cs" />
-    <Compile Include="Provider\SettingsDao.cs" />
     <Compile Include="Provider\RadioChannelListProvider.cs" />
-    <Compile Include="Model\SettingsModel.cs" />
     <Compile Include="Resources\AddRadio\AddRadioStrings.de.Designer.cs">
       <DependentUpon>AddRadioStrings.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -139,7 +136,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\RadioChannel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -199,6 +195,10 @@
       <Project>{c08074cb-f609-4199-a3d3-74749b32f044}</Project>
       <Name>MVVMmini</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Persistence\Persistence.csproj">
+      <Project>{b7315242-07a5-42c2-bfbf-8fd6bd8c7367}</Project>
+      <Name>Persistence</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PlayerInterface\PlayerInterface.csproj">
       <Project>{d29ef53d-ee5b-4bda-91f3-7c161373e818}</Project>
       <Name>PlayerInterface</Name>
@@ -237,6 +237,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Minus_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

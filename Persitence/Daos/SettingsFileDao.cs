@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Persistence.Model;
+using System;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using WebRadio.Model;
-using WebRadio.Properties;
 
-namespace WebRadio.Mapper
+namespace Persistence.Mapper
 {
-    public class SettingsDao : ISettingsDao
+    public class SettingsFileDao : ISettingsDao
     {
         string _path;
 
-        public SettingsDao(string path)
+        public SettingsFileDao(string path)
         {
             _path = path;
         }

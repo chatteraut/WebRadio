@@ -1,13 +1,9 @@
 ﻿using MicroMvvm;
+using Persistence;
+using Persistence.Mapper;
+using Persistence.Model;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebRadio.Mapper;
-using WebRadio.Model;
-using WebRadio.Static;
+using System.Windows;
 using WebRadio.StaticThings;
 
 namespace WebRadio.ViewModel
@@ -50,13 +46,13 @@ namespace WebRadio.ViewModel
             }
             set
             {
-                if(Settings.Volume != value)
+                if (Settings.Volume != value)
                 {
                     Settings.Volume = value;
                     _stream.SetVolume(value);
                     RaisePropertyChanged("Volume");
                 }
-                if(_stream.GetVolume() != value)
+                if (_stream.GetVolume() != value)
                 {
                     _stream.SetVolume(value);
                 }
@@ -84,9 +80,13 @@ namespace WebRadio.ViewModel
 
         private void InitializeSettings()
         {
-            Settings = _settingsDao.LoadSettings();
-            if (Settings == null)
+            try
             {
+                Settings = _settingsDao.LoadSettings();
+            }
+            catch (LoadFailedException)
+            {
+                MessageBox.Show(icon: MessageBoxImage.Error, messageBoxText: Resources.Strings.CannotOpenFile, button: MessageBoxButton.OK, caption: Resources.Strings.Problem);
                 Settings = new SettingsModel();
             }
         }

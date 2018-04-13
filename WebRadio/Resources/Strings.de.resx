@@ -121,7 +121,7 @@
     <value>Aktiver Kanal: </value>
   </data>
   <data name="CannotOpenFile" xml:space="preserve">
-    <value>Datei kann nicht geöffnet werden:</value>
+    <value>Datei kann nicht geöffnet werden</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Bestätigen</value>
